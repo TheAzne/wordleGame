@@ -21,22 +21,9 @@ export async function fetchWord(length, allowRepeats) {
     return words[Math.floor(Math.random() * words.length)];
   }
 
-// export async function threeWords() {
-//     const res = await fetch(url);
-//     const payload = await res.json();
-//     const filterWord = Object.keys(payload).filter(key => key.length == 3)
-//     const r
-andomWord = Math.floor(Math.random() * filterWord.length);
-//     return filterWord[randomWord];
-// }
 
 
-app.get('/api/word/', async (req, res) => {
-    const unique = req.query.unique === 'true';
-    const wordLength = parseInt(req.query.length);
-    const word = await fetchRandomWord(wordLength, unique);
-    res.json({ word });
-  });
+
 
   // http://localhost:5080/api/word?unique=${unique}&length=${length}
 
