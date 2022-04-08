@@ -1,10 +1,10 @@
 const HIGHSCORES = [];
 
-export async function saveScore(highscore) {
+export async function saveHighscore(highscore) {
   HIGHSCORES.push(highscore);
   return highscore;
 }
 
-export async function loadScore() {
+export async function loadHighscores() {
   return HIGHSCORES;
 }

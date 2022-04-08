@@ -30,7 +30,7 @@ function Game({ correctWord }) {
       startTime,
     };
 
-    await fetch("http://localhost:5080/api/highscores", {
+    await fetch("http://localhost:6090/api/highscores", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
