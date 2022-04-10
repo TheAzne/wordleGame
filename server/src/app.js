@@ -77,6 +77,7 @@ export default app;
 //   return <li className={item.result}>{item.letter}</li>
 // })
 
+
 //  .incorrect {
 //     background-color: red;
 // }
