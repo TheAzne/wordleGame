@@ -1,10 +1,20 @@
-const HIGHSCORES = [];
 
-export async function saveHighscore(highscore) {
-  HIGHSCORES.push(highscore);
-  return highscore;
-}
+// import mongoose from "mongoose"
 
-export async function loadHighscores() {
-  return HIGHSCORES;
-}
+
+// const Schema = mongoose.Schema;
+
+// const HighscoreSchema = new Schema ({
+//   //length:Number,
+//   //allowRepeats: Boolean,
+//   name:String,
+//   // time:Number,
+//   // guess: Number,
+//   // Date: String,
+// })
+
+// const SendHighscore = mongoose.model('highscore',HighscoreSchema );
+
+// export default SendHighscore;
+
+

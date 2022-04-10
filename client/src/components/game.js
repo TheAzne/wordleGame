@@ -1,7 +1,6 @@
 import { useState } from "react";
-
 function Game({ correctWord }) {
-  const [startTime] = useState(new Date());
+  //  const [startTime] = useState(new Date());
   const [gameState, setGameState] = useState("playing");
   const [endTime, setEndtime] = useState(null);
   const [inputText, setInputText] = useState("");
@@ -19,15 +18,15 @@ function Game({ correctWord }) {
     }
   };
 
-  const handleSubmit = async (ev) => {
-    ev.preventDefault();
 
+const handleSubmit = async (e) => {
+    e.preventDefault();
     const highscore = {
-      correctWord,
-      endTime,
-      guesses,
+      // correctWord,
+      // endTime,
+      // guesses,
       name,
-      startTime,
+    
     };
 
     await fetch("http://localhost:6090/api/highscores", {
@@ -41,14 +40,16 @@ function Game({ correctWord }) {
     setGameState("end");
   };
 
+
+
   if (gameState === "won") {
-    const duration = Math.round((endTime - startTime) / 1000);
+    // const duration = Math.round((endTime - startTime) / 1000);
     return (
       <div className="Game">
         <h1>You won!</h1>
         <p>The correct word was {guesses.at(-1)}</p>
         <p>Guesses: {guesses.length}</p>
-        <p>Duration: {duration}s</p>
+        {/* <p>Duration: {duration}</p> */}
         <h2>Add to highscore</h2>
         <form onSubmit={handleSubmit}>
           <input

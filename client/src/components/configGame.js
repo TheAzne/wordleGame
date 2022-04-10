@@ -1,6 +1,6 @@
-import configInput from "./playerChoice";
-import Nav from './Nav';
-const configGame = ({
+import ConfigInput from "./PlayerChoice";
+import Nav from "./Nav";
+const ConfigGame = ({
     setGameState,
     playerSubmit,
     setLengthOfWord,
@@ -11,8 +11,9 @@ const configGame = ({
     return(
         <>
         <h1>Wordle clone Game</h1>
-        <nav/>
-        <configInput
+        <Nav />
+
+        <ConfigInput
         setGameState={setGameState}
         playerSubmit={playerSubmit}
         setLengthOfWord={setLengthOfWord}
@@ -24,4 +25,4 @@ const configGame = ({
     );
 };
 
-export default configGame;
+export default ConfigGame;
