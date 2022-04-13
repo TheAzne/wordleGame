@@ -11,10 +11,11 @@ export async function fetchWord(length, allowRepeats) {
     return key.length == length;
   });
   const wordRepeat = Object.keys(payload).filter((key) => {
-    if (allowRepeats == "true" && /(.).*\1/.test(key))
+    if (allowRepeats == true && /(.).*\1/.test(key))
       return key.length == length;
   });
-  return allowRepeats == "true"
+  return allowRepeats == true
     ? wordRepeat[Math.floor(Math.random() * wordRepeat.length)]
     : words[Math.floor(Math.random() * words.length)];
 }
+

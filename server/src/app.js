@@ -18,10 +18,10 @@ app.set("view engine", "handlebars");
 app.set("views", "./server/views");
 
 app.get("/api/word", async (req, res) => {
-  const unique = req.query.allowRepeats === "true";
+  const unique = req.query.allowRepeats == "true" ;
   const wordLength = parseInt(req.query.length);
   const word = await fetchWord(wordLength, unique);
-  res.json({ word });
+  res.status(200).json(word);
 });
 
 app.post("/api/highscores", async (req, res) => {
