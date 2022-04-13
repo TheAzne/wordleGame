@@ -1,18 +1,18 @@
+import React from "react";
+import './App.css';
+import GameTime from "./components/SetupGame/GameTime";
 import { useEffect, useState } from "react";
-import "./static/App.css";
-import Game from "./components/Game";
-import ConfigGame from "./components/ConfigGame";
-import comparing from "./comparing";
-
+import SetupHome from "./components/SetupGame/SetupHome";
+import comparing from "./comparing"
 function App() {
-  const [correctWord, setCorrectWord] = useState("");
   const [gameState, setGameState] = useState("config");
-  const [lengthOfWord, setLengthOfWord] = useState(5);
-  const [repeatChar, setRepeatChar] = useState("false");
-  const [start, setStart] = useState("false");
+  const [correctWord, setCorrectWord] = useState('');
   const [guessWord, setGuessWord] = useState([]);
   const [time, setTime] = useState(0);
-
+  const [start, setStart] = useState(false);
+  const [wordLength, setWordLength] = useState(5);
+  const [unique, setUnique] = useState(false);
+  
   useEffect(() => {
     let interval = null;
 
@@ -26,53 +26,48 @@ function App() {
     return () => clearInterval(interval);
   }, [start]);
 
-  const playerSubmit = async (length, allowRepeats) => {
-    const res = await fetch(
-      `http://localhost:6090/api/word?length=${length}&allowRepeats=${allowRepeats}`
-    );
-    const data = await res.json();
-    setCorrectWord(data.word);
+ const handleSubmitConfig = async (allowRepeats, length)=>{
+    const res = await fetch("http://localhost:5080/api/word");
+    const payload = res.json();
+    setCorrectWord(payload.word);
     setGameState("Play");
-    setStart(true);
     setGuessWord([]);
+    setStart(true);
     return;
-  };
+ }
+  
+ const checkGuess = (guessedWord) => {
+  setGuessWord([...guessWord, comparing(guessedWord, correctWord)]);
 
-  const checkGuess = (guessedWord) => {
-    setGuessWord([...guessWord, comparing(guessedWord, correctWord)]);
-
-    if (guessedWord == correctWord) {
-      setStart(false);
-      setGameState("won");
-    }
-  };
-  return gameState === "config" ? (
+  if (guessedWord === correctWord) {
+    setStart(false);
+    setGameState('won');
+  }
+};
+ return gameState === "config" ? (
     <div className="App">
-      <ConfigGame
-        lengthOfWord={lengthOfWord}
-        setLengthOfWord={setLengthOfWord}
-        repeatChar={repeatChar}
-        setRepeatChar={setRepeatChar}
-        setGameState={setGameState}
-        playerSubmit={playerSubmit}
+      <SetupHome
+     wordLength={wordLength}
+     setWordLength={setWordLength}
+     unique={unique}
+     setUnique={setUnique}
+     setGameState={setGameState}
+     handleSubmitConfig={handleSubmitConfig}
       />
     </div>
   ) : (
     <div className="App">
-      <Game
-        correctWord={correctWord}
-        start={start}
-        setTime={setTime}
-        time={time}
-        checkGuess={checkGuess}
-        guessWord={guessWord}
-        gameState={gameState}
-        setGameState={setGameState}
-        lengthOfWord={lengthOfWord}
-        repeatChar={repeatChar}
-      />
-      <p>{correctWord}</p>
-      <p>{guessWord.length}</p>
+      <GameTime 
+       correctWord={correctWord}
+       start={start}
+       setTime={setTime}
+       time={time}
+       checkGuess={checkGuess}
+       guessWord={guessWord}
+       gameState={gameState}
+       setGameState={setGameState}
+       wordLength={wordLength}
+       unique={unique}/>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+
+
+.HomePage h1, h2, h3{
+    display: flex;
+    justify-content: center;
+}
+
+.HomePage form select{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.HomeNav {
+    display: flex;
+    justify-content: center;
+}
+.HomeNav a{
+    padding: 20px;
+}
