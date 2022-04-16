@@ -26,11 +26,12 @@ function App() {
     return () => clearInterval(interval);
   }, [start]);
 
- const handleSubmitConfig = async (allowRepeats, length)=>{
-    const res = await fetch("http://localhost:5080/api/word");
-    const payload = res.json();
-    setCorrectWord(payload.word);
-    setGameState("Play");
+  const handleSubmitConfig = async (allowRepeats, length)=>{
+    const res = await fetch(`http://localhost:5080/api/word?length=${length}&allowRepeats=${allowRepeats}`);
+    const payload = await res.json();
+    setCorrectWord(payload);
+    console.log(payload)
+    setGameState("playing");
     setGuessWord([]);
     setStart(true);
     return;

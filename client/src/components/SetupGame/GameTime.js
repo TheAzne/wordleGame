@@ -13,12 +13,14 @@ function GameTime({
   unique,
   wordLength,
 }) {
-  if (gameState === "Playing") {
+  if (gameState === "playing") {
     return (
       <div className="GameTime">
-        <Timer />
+        Hello
+        {
+        /* <Timer /> 
         <GuessesRenderInput guessWord={guessWord} correctWord={correctWord} />
-        <Guesses checkGuess={checkGuess} correctWord={correctWord} />
+        <Guesses checkGuess={checkGuess} correctWord={correctWord} /> */}
       </div>
     );
   } else if (gameState === "Won") {
