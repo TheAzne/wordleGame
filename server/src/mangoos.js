@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 mongoose.connect(
-  "mongodb+srv://azne:hejhejhej123@cluster0.ijatt.mongodb.net/wordle_game?retryWrites=true&w=majority"
+  "mongodb+srv://bigazne:hejhejhej123@cluster0.ijatt.mongodb.net/wordle_game?retryWrites=true&w=majority"
 ),
   () => console.log("MongoDB alive");
 

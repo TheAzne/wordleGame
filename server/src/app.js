@@ -60,7 +60,7 @@ app.get("/api/highscore", async (req, res) => {
       name: gh.name,
       wordLength: gh.wordLength,
       unique: gh.unique,
-      duration: (gh.endTime.getTime() - gh.startTime.getTime()) / 1000,
+     // duration: (gh.endTime.getTime() - gh.startTime.getTime()) / 1000,
     })),
   });
 });
